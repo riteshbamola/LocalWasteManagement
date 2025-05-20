@@ -16,7 +16,11 @@ const requestSchema = new mongoose.Schema({
     enum: ['pending', 'scheduled', 'in_progress', 'completed', 'cancelled'],
     default: 'pending'
   },
-  requesDate: {
+  riderId: {
+    type: String,
+    default: null,
+  },
+  requestDate: {
     type: Date,
     default: Date.now
   },
