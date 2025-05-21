@@ -13,7 +13,7 @@ const requestSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'scheduled', 'in_progress', 'completed', 'cancelled'],
+    enum: ['pending', 'accepted', 'in_progress', 'completed', 'cancelled'],
     default: 'pending'
   },
   riderId: {

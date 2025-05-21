@@ -7,7 +7,7 @@ router.post('/postrequest', authenticateToken, (req, res) => {
     const user = req.user;
     const { pickuplocation } = req.body;
     const userId = user.id;
-    console.log(userId);
+    // console.log(userId);
 
     const requ = new Request({ pickuplocation, userId })
     requ.save()
