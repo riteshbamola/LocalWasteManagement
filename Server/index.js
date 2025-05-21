@@ -11,8 +11,7 @@ const port = process.env.PORT || 3000;
 
 db();
 
-app.use(express.json()); // parse JSON bodies
-
+app.use(express.json());
 
 app.use('/api/user', userRoute);
 app.use('/api/user', requestRoute);
