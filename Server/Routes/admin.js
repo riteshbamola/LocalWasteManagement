@@ -70,10 +70,15 @@ router.post('/pickuprequest', async (req, res) => {
     console.log(id);
     const { pickup, } = req.body;
     const request = await Request.findById(id);
+
     if (!request) {
       return res.status(404).json({ msg: "Request not found" });
     }
-    request.pickupDate = pickup; // Update the field
+    if (request.status === "in_progress") {
+      return res.status(400).json({ msg: "Request already in progress" });
+    }
+    request.pickupDate = pickup;
+    request.status = "in_progress" // Update the field
     await request.save();
     res.json({ message: "Request updated successfully" });
 
@@ -82,5 +87,26 @@ router.post('/pickuprequest', async (req, res) => {
     res.status(400).json({ msg: error.message })
   }
 });
+router.post('/completed', async (req, res) => {
+  try {
+    const { id } = req.query;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: 'Invalid ID format' });
+    }
+    const request = await Request.findById(id);
+    if (!request) {
+      return res.status(404).json({ msg: "Request not found" });
+    }
+    if (request.status === "completed") {
+      return res.status(400).json({ msg: "Request already completed" });
+    }
+    request.status = "completed"
+    await request.save();
+    res.json({ message: "Request updated successfully", request: request });
+
+  } catch (error) {
+    res.status(400).json({ msg: error.message })
+  }
+})
 
 module.exports = router;
