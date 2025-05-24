@@ -3,13 +3,23 @@ import './request.css';
 import Map from '../Maps/Map';
 
 const Request = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    address: '',
-    wasteType: '',
-    pickupDate: '',
-    pickupTime: ''
-  });
+
+const getCurrentDateTime = () => {
+  const now = new Date();
+  const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
+  const time = now.toTimeString().split(':').slice(0, 2).join(':'); // HH:MM
+  return { date, time };
+};
+
+const { date, time } = getCurrentDateTime();
+
+const [formData, setFormData] = useState({
+  name: '',
+  address: '',
+  wasteType: '',
+  pickupDate: date,
+  pickupTime: time
+});
 
   const [location, setLocation] = useState(null);
   const [mode, setMode] = useState('select'); // 'select' or 'current'
@@ -60,22 +70,24 @@ const Request = () => {
       alert('Geolocation is not supported by your browser');
     }
   };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const requestData = { ...formData, location };
+  console.log('Pickup Request:', requestData);
+  alert('Pickup request submitted!');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const requestData = { ...formData, location };
-    console.log('Pickup Request:', requestData);
-    alert('Pickup request submitted!');
-    setFormData({
-      name: '',
-      address: '',
-      wasteType: '',
-      pickupDate: '',
-      pickupTime: ''
-    });
-    setLocation(null);
-  };
+  const { date, time } = getCurrentDateTime(); // get fresh values
 
+  setFormData({
+    name: '',
+    address: '',
+    wasteType: '',
+    pickupDate: date,
+    pickupTime: time
+  });
+  setLocation(null);
+};
+const [currentTime, setCurrentTime] = useState({ date, time });
   return (
     <div className='request-container'>
       <div className='map'>
@@ -105,6 +117,7 @@ const Request = () => {
             <input
               type="text"
               name="name"
+              
               value={formData.name}
               onChange={handleChange}
               required
@@ -119,6 +132,7 @@ const Request = () => {
               value={formData.address}
               onChange={handleChange}
               required
+              readOnly
               placeholder="Pickup address"
             />
           </label>
@@ -137,30 +151,7 @@ const Request = () => {
               <option value="hazardous">Hazardous</option>
               <option value="electronic">Electronic</option>
             </select>
-          </label>
-
-          <label>
-            Pickup Date:
-            <input
-              type="date"
-              name="pickupDate"
-              value={formData.pickupDate}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          <label>
-            Pickup Time:
-            <input
-              type="time"
-              name="pickupTime"
-              value={formData.pickupTime}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
+          </label>         
           <button type="submit" className='submit-btn'>Submit Request</button>
         </form>
       </div>
