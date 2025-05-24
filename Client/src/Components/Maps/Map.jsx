@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
 import { useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
+import './map.css'
 
 function CurrentLocationMarker({ onLocationSelect }) {
   const [position, setPosition] = useState(null);
@@ -51,7 +52,8 @@ function Map({ onLocationSelect, useCurrentLocation }) {
   const defaultPosition = [28.6139, 77.2090]; // fallback to Delhi
 
   return (
-    <MapContainer center={defaultPosition} zoom={13} style={{ height: '400px', width: '100%' }}>
+   <MapContainer center={defaultPosition} zoom={13} className="map-container">
+
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

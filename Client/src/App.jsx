@@ -4,6 +4,7 @@ import Home from './Components/Home/Home';
 import Request from './Components/Request/request';
 import Navbar from './Components/Navbar/Navbar';
 import About from './Components/About/About';
+import Profile from './Components/Profile/Profile';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/request" element={<Request />} />
         <Route path='/about' element={<About/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </Router>
   );

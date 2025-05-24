@@ -10,35 +10,32 @@ const Navbar = () => {
 
         <ul className="navbar-links">
           <li>
-            <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>
+            <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/request" className={({ isActive }) => isActive ? "active" : ""}>
+            <NavLink to="/request" className={({ isActive }) => (isActive ? 'active' : '')}>
               Request Pickup
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>
+            <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>
               About
             </NavLink>
           </li>
         </ul>
 
-        <div
-          className="navbar-profile"
-          onClick={() => alert('User profile clicked!')}
-          role="button"
-          tabIndex={0}
-          onKeyPress={(e) => { if (e.key === 'Enter') alert('User profile clicked!'); }}
-        >
-          <img
-            src="https://i.pravatar.cc/150?img=3"
-            alt="User Avatar"
-          />
-          <span>Ritesh</span>
-        </div>
+        {/* Profile Section - Avatar + Name Side by Side */}
+        <NavLink to="/profile" className="navbar-profile-link">
+          <div className="navbar-profile">
+            <img
+              src="https://i.pravatar.cc/150?img=3 "
+              alt="User Avatar"
+            />
+            <span className="navbar-username">Ritesh</span>
+          </div>
+        </NavLink>
       </div>
     </nav>
   );

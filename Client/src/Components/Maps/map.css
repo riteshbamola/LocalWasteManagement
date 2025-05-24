@@ -1,0 +1,19 @@
+.map-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 60vh;
+  }
+}
