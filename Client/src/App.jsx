@@ -1,9 +1,11 @@
 import React from 'react'
 import Home from './Components/Home/Home'
+import Request from './Components/Request/request'
 const App = () => {
   return (
     <div>
-      <Home/>
+      {/* <Home/> */}
+      <Request/>
     </div>
   )
 }
