@@ -1,55 +1,73 @@
+/* Request Section */
 .request-container {
-  max-width: 700px;
+  max-width: 900px;
+  /* max-height: 70vh; */
   margin: 2rem auto;
   padding: 1rem;
-  font-family: 'Poppins', sans-serif;
-  color: #e0e0e0;
-  background-color: #121212;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-}
-
-.map {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.map h1 {
+  background-color: #000;
+  /* border-radius: 12px; */
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); */
+  display: flex;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   color: #e0e0e0;
 }
 
-.map button {
-  margin-top: 1rem;
-  padding: 0.5rem 1.2rem;
-  background-color: #2979ff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(41, 121, 255, 0.5);
-  transition: background-color 0.3s ease;
-}
-
-.map button:hover {
-  background-color: #1565c0;
-}
-
+.map,
 .pickup-form {
-  background: rgba(255, 255, 255, 0.05);
+  flex: 1 1 45%;
+  min-width: 300px;
+  background: #000;
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  /* border-radius: 12px; */
+  /* box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); */
+  display: flex;
+  flex-direction: column;
 }
 
+.map h1,
 .pickup-form h1 {
   margin-bottom: 1rem;
   color: #e0e0e0;
 }
 
+/* Buttons in map section */
+.location-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.location-buttons button {
+  padding: 0.6rem 1.4rem;
+  background-color: #2979ff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(41, 121, 255, 0.5);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.location-buttons button:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+}
+
+/* Location info text */
+.location-info {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+/* Pickup form labels and inputs */
 .pickup-form form label {
   display: block;
   margin-bottom: 1rem;
@@ -85,6 +103,7 @@
   min-height: 80px;
 }
 
+/* Submit button */
 .submit-btn {
   margin-top: 1rem;
   padding: 0.7rem 1.5rem;
@@ -104,29 +123,17 @@
   box-shadow: 0 6px 18px rgba(21, 101, 192, 0.8);
 }
 
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .request-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 
-.location-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.location-buttons button {
-  padding: 0.6rem 1.4rem;
-  background-color: #2979ff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(41, 121, 255, 0.5);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.location-buttons button:hover {
-  background-color: #1565c0;
-  transform: translateY(-2px);
+  .map,
+  .pickup-form {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+  }
 }

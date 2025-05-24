@@ -1,0 +1,130 @@
+.about-section {
+  background-color: #000;
+  /* full black */
+  color: #ddd;
+  padding: 3rem 2rem;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.about-content {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.85);
+  /* box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); */
+}
+
+.about-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #eee;
+}
+
+.about-content p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #bbb;
+}
+
+.social-links {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+}
+
+.social-links a {
+  color: #ccc;
+  font-size: 2rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 0.2rem;
+  user-select: none;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: #fff;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.social-links a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.about-footer {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 2rem 1.5rem;
+    min-height: auto;
+  }
+
+  .about-content {
+    padding: 1.5rem;
+  }
+
+  .about-content h2 {
+    font-size: 2rem;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links {
+    gap: 1.2rem;
+  }
+
+  .social-links a {
+    font-size: 1.7rem;
+  }
+
+  .about-footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .about-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-content p {
+    font-size: 0.9rem;
+  }
+
+  .social-links {
+    gap: 1rem;
+  }
+
+  .social-links a {
+    font-size: 1.4rem;
+  }
+
+  .about-footer {
+    font-size: 0.85rem;
+  }
+}

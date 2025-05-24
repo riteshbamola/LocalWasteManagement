@@ -100,13 +100,7 @@ const [currentTime, setCurrentTime] = useState({ date, time });
 
         <Map onLocationSelect={handleLocationSelect} enableClick={mode === 'select'} />
 
-        {location && (
-          <div className="location-info">
-            <p><strong>Latitude:</strong> {location.lat}</p>
-            <p><strong>Longitude:</strong> {location.lng}</p>
-            <p><strong>Address:</strong> {location.address}</p>
-          </div>
-        )}
+        
       </div>
 
       <div className='pickup-form'>
