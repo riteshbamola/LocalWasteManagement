@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './request.css';
 import Map from '../Maps/Map';
-
+import { useGlobalContext } from '../../Contexts/globalcontext';
 const Request = () => {
 
+  const {addrequest,error,setError} = useGlobalContext();
 const getCurrentDateTime = () => {
   const now = new Date();
   const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
@@ -72,7 +73,13 @@ const [formData, setFormData] = useState({
   };
 const handleSubmit = (e) => {
   e.preventDefault();
-  const requestData = { ...formData, location };
+  // const requestData = { ...formData, location };
+const requestData = {
+  ...formData,
+  location: location, // convert location to string
+};
+
+  addrequest(requestData);
   console.log('Pickup Request:', requestData);
   alert('Pickup request submitted!');
 

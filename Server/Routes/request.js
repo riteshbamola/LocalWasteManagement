@@ -2,26 +2,46 @@ const express = require('express')
 const Request = require('../Models/request');
 const { authenticateToken } = require('../utilites');
 const router = express.Router();
-router.post('/postrequest', authenticateToken, (req, res) => {
+router.post('/postrequest', authenticateToken, async (req, res) => {
   try {
     const user = req.user;
-    const { pickuplocation } = req.body;
     const userId = user.id;
-    // console.log(userId);
+    console.log(user);
+    // Destructure all expected fields from req.body
+    const {
+      name,
+      address,
+      location,
+      wasteType,
+      pickupDate,
+      pickupTime,
+    } = req.body;
 
-    const requ = new Request({ pickuplocation, userId })
-    requ.save()
-      .then((requ) => {
-        res.json(requ);
-      })
-      .catch((err) => {
-        res.status(400).json({ message: err.message });
-      });
-  }
-  catch (error) {
+    // Validate required fields manually if you want:
+    if (!name || !address || !location || !location.lat || !location.lng || !location.address || !wasteType || !pickupDate || !pickupTime) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Create new Request document
+    const newRequest = new Request({
+      userId,
+      name,
+      address,
+      location,
+      wasteType,
+      pickupDate,
+      pickupTime,
+      // status, riderId, requestDate will be defaulted automatically
+    });
+
+    const savedRequest = await newRequest.save();
+    console.log("saved");
+    res.json(savedRequest);
+
+  } catch (error) {
     res.status(400).json({ message: error.message });
   }
-})
+});
 
 router.get('/getrequest', authenticateToken, async (req, res) => {
   try {
