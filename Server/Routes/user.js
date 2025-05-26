@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken')
 const User = require('../Models/user')
 const { authenticateToken } = require('../utilites')
 router.post('/register', (req, res) => {
-  const { name, email, password, address } = req.body;
-  const user = new User({ name, email, password, address });
+  const { name, email, password } = req.body;
+  const user = new User({ name, email, password });
   user.save()
     .then((user) => {
       res.json(user);
@@ -26,8 +26,9 @@ router.post('/signin', async (req, res) => {
   if (email == user.email && password == user.password) {
     const payload = {
       id: user._id,
+      name: user.name,
       email: user.email,
-      address: user.address,
+      // address: user.address,
     }
     const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN, {
       expiresIn: "36000m",
