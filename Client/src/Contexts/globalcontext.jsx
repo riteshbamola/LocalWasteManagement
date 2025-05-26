@@ -9,7 +9,38 @@ export const GlobalProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [username,setusername]=useState(null);
 
+  const handlesignup = async (data) =>{
+    try {
+    const response = await axiosInstance.post('/user/register', data);
+
+    if (response.data) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+  }
+const handlelogin = async (data) => {
+  try {
+    const response = await axiosInstance.post('/user/signin', data);
+
+    if (response.data) {
+      const { user, accessToken: token } = response.data;
+      setUser(user);
+      setusername(user.name)
+      console.log(user);
+      setToken(token);
+      localStorage.setItem('token', token); // ✅ Use "token"
+      // console.log(token);
+      return response.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
   const getAccount = async () => {
     setLoading(true);
     setError(null);
@@ -47,6 +78,9 @@ export const GlobalProvider = ({ children }) => {
       requests,
       loading,
       error,
+      username,
+      handlesignup,
+      handlelogin,
       getAccount,
       addrequest,
       setUser,

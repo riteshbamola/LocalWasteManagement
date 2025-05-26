@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './request.css';
+import Navbar from '../Navbar/Navbar';
 import Map from '../Maps/Map';
 import { useGlobalContext } from '../../Contexts/globalcontext';
 const Request = () => {
@@ -96,6 +97,10 @@ const requestData = {
 };
 const [currentTime, setCurrentTime] = useState({ date, time });
   return (
+    <>
+    <Navbar/>
+    
+   
     <div className='request-container'>
       <div className='map'>
         <h1>Select Your Location</h1>
@@ -157,6 +162,7 @@ const [currentTime, setCurrentTime] = useState({ date, time });
         </form>
       </div>
     </div>
+     </>
   );
 };
 

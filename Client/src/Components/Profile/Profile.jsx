@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './Profile.css';
-
+import Navbar from '../Navbar/Navbar';
+import { useGlobalContext } from '../../Contexts/globalcontext';
 const Profile = () => {
+
+  const{username}= useGlobalContext();
   const [requests, setRequests] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -22,12 +25,14 @@ const Profile = () => {
   };
 
   return (
+    <>
+   <Navbar/>
     <div className="profile-container">
       {/* Sidebar */}
       <div className="profile-sidebar">
         <div className="profile-header">
           <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" />
-          <h3>John Doe</h3>
+          <h3>{username}</h3>
         </div>
 
         <button className="request-btn" onClick={fetchRequests}>
@@ -57,6 +62,7 @@ const Profile = () => {
         )}
       </div>
     </div>
+     </>
   );
 };
 
