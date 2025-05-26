@@ -1,9 +1,11 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import './About.css';
-
+import Navbar from '../Navbar/Navbar';
 const About = () => {
-  return (
+  return (<>
+ 
+    <Navbar/>
     <section className="about-section">
       <div className="about-content">
         <h2>About Me</h2>
@@ -30,6 +32,7 @@ const About = () => {
         </footer>
       </div>
     </section>
+     </>
   );
 };
 

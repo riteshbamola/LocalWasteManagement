@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-
+import Navbar from '../Navbar/Navbar';
 const Home = () => {
   const navigate = useNavigate();
 
@@ -10,6 +10,9 @@ const Home = () => {
   };
 
   return (
+    <>
+    <Navbar/>
+    
     <div className='main'>
       <div className='home-container'>
         <section className='left'>
@@ -21,6 +24,7 @@ const Home = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 
