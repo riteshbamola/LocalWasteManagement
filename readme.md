@@ -1,6 +1,6 @@
 # My Awesome Project 🚀
 
-Welcome to the project! We're glad you're here and want to help. This project welcomes contributions from everyone — whether you're fixing a typo, adding a feature, or just testing things out.
+Welcome to the project! We're glad you're here and want to help. This project welcomes contributions from everyone — whether you're fixing a typo, adding a feature, or just testing things.
 
 ---
 
