@@ -10,6 +10,7 @@ export const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [username,setusername]=useState(null);
+  const [adminRide,setAdminRide] = useState([]);
 
   const handlesignup = async (data) =>{
     try {
@@ -92,7 +93,9 @@ const handlelogin = async (data) => {
       addrequest,
       setUser,
       setToken,
-      signout
+      signout,
+      adminRide,
+      setAdminRide
     }}>
       {children}
     </GlobalContext.Provider>
