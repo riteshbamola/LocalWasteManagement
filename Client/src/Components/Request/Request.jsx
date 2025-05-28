@@ -98,7 +98,6 @@ const requestData = {
 const [currentTime, setCurrentTime] = useState({ date, time });
   return (
     <>
-    <Navbar/>
     
    
     <div className='request-container'>

@@ -3,9 +3,8 @@ import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import './About.css';
 import Navbar from '../Navbar/Navbar';
 const About = () => {
-  return (<>
- 
-    <Navbar/>
+  return (
+  <>
     <section className="about-section">
       <div className="about-content">
         <h2>About Me</h2>

@@ -45,10 +45,10 @@ router.get('/profile', authenticateToken, async (req, res) => {
   if (!user) {
     return res.json({ msg: "Error loading the details" })
   }
-  const userdata = await User.find({ _id: user.id });
-  console.log(userdata);
-  if (userdata) {
-    return res.status(200).json(userdata);
+  const userinfo = await User.find({ _id: user.id });
+  console.log(userinfo)
+  if (userinfo) {
+    return res.json({ message: "login success", userinfo })
   }
 
 })

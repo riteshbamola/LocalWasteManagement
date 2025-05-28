@@ -7,10 +7,10 @@ export const GlobalProvider = ({ children }) => {
   const [requests, setrequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [token, setToken] = useState(null);
-  const [username,setusername]=useState(null);
   const [adminRide,setAdminRide] = useState([]);
+  const [adminUser,setAdminUser] = useState([]);
 
   const handlesignup = async (data) =>{
     try {
@@ -31,11 +31,8 @@ const handlelogin = async (data) => {
     if (response.data) {
       const { user, accessToken: token } = response.data;
       setUser(user);
-      setusername(user.name)
-      console.log(user);
       setToken(token);
       localStorage.setItem('token', token); // ✅ Use "token"
-      // console.log(token);
       return response.data;
     }
   } catch (error) {
@@ -48,7 +45,9 @@ const handlelogin = async (data) => {
     try {
       const response = await axiosInstance.get('/user/profile');
       if (response.data) {
-        setUser(response.data);
+        const {userinfo}= response.data;
+        // setUser(userinfo);
+        console.log("userdata",response.userinfo);
       }
     } catch (err) {
       setError(err);
@@ -59,7 +58,7 @@ const handlelogin = async (data) => {
 
   const signout =()=>{
     localStorage.removeItem('token');
-    setUser(null);
+    setUser({});
     setToken(null);
     setusername(null);
   }
@@ -86,7 +85,6 @@ const handlelogin = async (data) => {
       requests,
       loading,
       error,
-      username,
       handlesignup,
       handlelogin,
       getAccount,

@@ -1,42 +1,46 @@
-import React from 'react';
+
+import React, { useState , useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import { useGlobalContext } from '../../Contexts/globalcontext';
-const Navbar = () => {
-  const { username } = useGlobalContext();
-console.log(username); // For debugging
-
+const Navbar = ({active,setActive}) => {
+const { user,getAccount } = useGlobalContext();
+ useEffect(() => {
+    getAccount();
+    return () => { };
+  }, [])
 return (
+
   <nav className="navbar">
     <div className="navbar-container">
       <div className="navbar-logo">WasteMgmt</div>
 
       <ul className="navbar-links">
         <li>
-          <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink end className={({ isActive }) => (isActive ? 'active' : '')} onClick={()=>setActive(1)}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/request" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} onClick={()=>setActive(2)}>
             Request Pickup
           </NavLink>
         </li>
         <li>
-          <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} onClick={()=>setActive(4)}>
             About
           </NavLink>
         </li>
       </ul>
 
       {/* ✅ Safe rendering only when user is available */}
-      <NavLink to="/profile" className="navbar-profile-link">
+      <NavLink onClick={()=>setActive(3)} className="navbar-profile-link">
         <div className="navbar-profile">
           <img
             src="https://i.pravatar.cc/150?img=3"
             alt="User Avatar"
           />
-          <span className="navbar-username">{username}</span>
+          <span className="navbar-username">{user._id}</span>
         </div>
       </NavLink>
     </div>
