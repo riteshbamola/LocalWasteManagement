@@ -56,6 +56,13 @@ const handlelogin = async (data) => {
     }
   };
 
+  const signout =()=>{
+    localStorage.removeItem('token');
+    setUser(null);
+    setToken(null);
+    setusername(null);
+  }
+
   const addrequest = async (data) => {
     setLoading(true);
     setError(null);
@@ -84,7 +91,8 @@ const handlelogin = async (data) => {
       getAccount,
       addrequest,
       setUser,
-      setToken
+      setToken,
+      signout
     }}>
       {children}
     </GlobalContext.Provider>

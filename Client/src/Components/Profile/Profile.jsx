@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import './Profile.css';
 import Navbar from '../Navbar/Navbar';
+
+import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../Contexts/globalcontext';
 const Profile = () => {
+ const navigate = useNavigate();
 
-  const{username}= useGlobalContext();
+  const{username,signout}= useGlobalContext();
   const [requests, setRequests] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -23,6 +26,10 @@ const Profile = () => {
       setLoading(false);
     }, 800);
   };
+  const handleClick =()=>{
+    signout();
+    navigate('/login');
+  }
 
   return (
     <>
@@ -38,6 +45,7 @@ const Profile = () => {
         <button className="request-btn" onClick={fetchRequests}>
           My Requests
         </button>
+          <button className="signout-btn" onClick={handleClick}>Sign Out</button>
       </div>
 
       {/* Main Content Area */}
@@ -58,9 +66,13 @@ const Profile = () => {
                 </li>
               ))}
             </ul>
+          
+
           </div>
         )}
+       
       </div>
+      
     </div>
      </>
   );
